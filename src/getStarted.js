@@ -1,15 +1,15 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 export default function getStarted() {
     return (
         <div>
-            <Link to= {"/"}>
+            <Link to= {'/'}>
                 <div className='links'>
                     Home
                 </div>
             </Link>
-            <Link to= {"/results"}>
+            <Link to= {'/results'}>
                 <div className='links'>
                     Submit!
                 </div>
