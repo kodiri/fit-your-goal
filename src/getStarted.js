@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import './getStarted.css'
 
-class GetStarted extends Component{
+export default class GetStarted extends Component{
     constructor(){
         super();
         this.state = {
@@ -13,9 +11,6 @@ class GetStarted extends Component{
                 age: ''
             }
         }
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(e){
@@ -46,10 +41,10 @@ class GetStarted extends Component{
     render(){
         return(
             <div className='get-started'>
-                <form className='get-started-form' onSubmit={this.handleSubmit}>
+                <form className='get-started-form' onSubmit={(e) => this.handleSubmit(e)}>
                     <label>
                         Age
-                        <input type='text' name='age' value={this.state.fields.age} onChange={this.handleChange} />
+                        <input type='text' name='age' value={this.state.fields.age} onChange={(e) => this.handleChange(e)} />
                     </label>
                     <div style={{display: 'inline-block', color: 'red'}}>{this.state.error_msg.age}</div>
                     <br/>
@@ -59,5 +54,3 @@ class GetStarted extends Component{
         );
     }
 }
-
-export default GetStarted;
