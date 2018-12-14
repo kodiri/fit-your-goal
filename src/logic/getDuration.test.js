@@ -54,6 +54,7 @@ describe('getDuration function', () => {
     }
     ].forEach(scenario => {
         it(scenario.it, () => {
+            
             //given
             let durations = [10, 20, 30, 40, 50, 60];
     
@@ -62,7 +63,7 @@ describe('getDuration function', () => {
     
             //then
             expect(getDuration(age, activityLevel, durations))
-            .toEqual(scenario.toEqual);
+                .toEqual(scenario.toEqual);
         });
     });
 });
