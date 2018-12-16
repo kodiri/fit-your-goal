@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import * as startUtils from './get-started/get-started-utils/GetStartedUtils';
+import MyButton from './get-started/text-fields/TextField';
+import TextInputs from './get-started/text-fields/TextInputs';
 
 export default class GetStarted extends Component{
     constructor(){
@@ -60,6 +62,12 @@ export default class GetStarted extends Component{
         return false;
     }
 
+    changeAge(){
+        this.setState({
+            goalOptionVal: 'fitness'
+        });
+    }
+
     
     validateNumericalFields(){
         let checkIfEmpty = startUtils.everythingFilled(this.state.fields);
@@ -90,7 +98,7 @@ export default class GetStarted extends Component{
                     ))}
                     <label>
                         Goal
-                        <select value={this.state.optionVal} onChange={(e) => this.handleGoalOptionsChange(e)}>
+                        <select value={this.state.goalOptionVal} onChange={(e) => this.handleGoalOptionsChange(e)}>
                             <option 
                                 style={{display: startUtils.displayGoalDefaultOrNot(this.state.goalOptionVal)}} 
                                 value='instruction'>
@@ -109,6 +117,12 @@ export default class GetStarted extends Component{
                     <br/>
                     <input type='submit' value='Get Started'/>
                 </form>
+                <TextInputs 
+                    names={this.allnames} 
+                    fields={this.state.fields} 
+                    errors={this.state.error_msg} 
+                    textChangeEvent={(e) => this.handleChange(e)} 
+                />
             </div>
         );
     }
