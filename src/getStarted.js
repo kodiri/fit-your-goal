@@ -121,7 +121,7 @@ export default class GetStarted extends Component{
                     names={this.allnames} 
                     fields={this.state.fields} 
                     errors={this.state.error_msg} 
-                    textChangeEvent={(e) => this.handleChange(e)} 
+                    textChangeEvent={(e) => this.handleChange(e)}
                 />
             </div>
         );
