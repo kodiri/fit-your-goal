@@ -1,55 +1,128 @@
 import React, { Component } from 'react';
+import * as startUtils from './get-started/get-started-utils/GetStartedUtils';
+import MyButton from './get-started/text-fields/TextField';
+import TextInputs from './get-started/text-fields/TextInputs';
 
 export default class GetStarted extends Component{
     constructor(){
         super();
         this.state = {
             fields: {
-                age: ''
+                age: '',
+                weight: '',
+                height: '',
+                activity: ''
             },
             error_msg: {
-                age: ''
-            }
-        }
+                age: '',
+                weight: '',
+                height: '',
+                activity: '',
+                goal: ''
+            },
+            goalOptionVal: 'instruction'
+        };
+
+        this.allnames = Object.keys(this.state.fields);
+        this.options = ['fitness', 'lose-weight'];
     }
 
     handleChange(e){
+        let newValues = startUtils.updateFields(this.state.fields, e.target);
         this.setState({
-            fields: {
-                [e.target.name]: e.target.value
-            },
-            error_msg: {
-                age: ''
-            }
+            fields: newValues
         });
     }
 
+    clearErrorMessages(){
+        this.setState({
+            error_msg: this.createEmptyFieldObj()
+        });
+    }
+
+    
+
     handleSubmit(e){
         e.preventDefault();
-        if(!this.state.fields.age){
-            this.setState({
-                error_msg: {
-                    age: 'Field is empty'
-                }
-            });
-        }
-        else{
+        let allGood = this.validateAllEverything();
+        if(allGood){
             this.props.history.push('/results', this.state.fields);
         }
+    }
+
+    validateAllEverything(){
+        let numsErrorMessages = this.validateNumericalFields();
+        let numsWithGoalsErr = startUtils.validateGoalsOptions(numsErrorMessages, this.state.goalOptionVal);
+        if(startUtils.checkIfEverythingIsGood(numsWithGoalsErr)){
+            return true;
+        }
+        this.setState({
+            error_msg: numsWithGoalsErr
+        });
+        return false;
+    }
+
+    changeAge(){
+        this.setState({
+            goalOptionVal: 'fitness'
+        });
+    }
+
+    
+    validateNumericalFields(){
+        let checkIfEmpty = startUtils.everythingFilled(this.state.fields);
+        return checkIfEmpty;
+    }
+
+    
+
+    handleGoalOptionsChange(e){
+        this.setState({
+            goalOptionVal: e.target.value
+        });
     }
 
     render(){
         return(
             <div className='get-started'>
                 <form className='get-started-form' onSubmit={(e) => this.handleSubmit(e)}>
+                    {this.allnames.map((name, i) => (
+                        <span key={i}>
+                            <label>
+                                {`${name[0].toUpperCase()}${name.substring(1)}`}
+                                <input type='text' name={name} value={this.state.fields[name]} onChange={(e) => this.handleChange(e)} />
+                                <div style={{display: 'inline-block', color: 'red'}}>{this.state.error_msg[name]}</div>
+                            </label>
+                            <br/>
+                        </span>
+                    ))}
                     <label>
-                        Age
-                        <input type='text' name='age' value={this.state.fields.age} onChange={(e) => this.handleChange(e)} />
+                        Goal
+                        <select value={this.state.goalOptionVal} onChange={(e) => this.handleGoalOptionsChange(e)}>
+                            <option 
+                                style={{display: startUtils.displayGoalDefaultOrNot(this.state.goalOptionVal)}} 
+                                value='instruction'>
+                                    Choose your desired goal
+                            </option>
+                            {
+                                this.options.map((option, i) => (
+                                    <option key={i} value={option}>
+                                        {startUtils.kebabCaseToWords(option)}
+                                    </option>
+                                ))
+                            }
+                        </select>
+                        <div style={{display: 'inline-block', color: 'red'}}>{this.state.error_msg.goal}</div>
                     </label>
-                    <div style={{display: 'inline-block', color: 'red'}}>{this.state.error_msg.age}</div>
                     <br/>
                     <input type='submit' value='Get Started'/>
                 </form>
+                <TextInputs 
+                    names={this.allnames} 
+                    fields={this.state.fields} 
+                    errors={this.state.error_msg} 
+                    textChangeEvent={(e) => this.handleChange(e)}
+                />
             </div>
         );
     }
