@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import * as startUtils from './get-started/get-started-utils/GetStartedUtils';
-import MyButton from './get-started/text-fields/TextField';
 import TextInputs from './get-started/text-fields/TextInputs';
+import Dropdown from './get-started/dropdown/Dropdown';
+import SubmitButton from './get-started/submit-button/SubmitButton';
+import './GetStarted.css';
 
 export default class GetStarted extends Component{
     constructor(){
@@ -33,14 +35,6 @@ export default class GetStarted extends Component{
             fields: newValues
         });
     }
-
-    clearErrorMessages(){
-        this.setState({
-            error_msg: this.createEmptyFieldObj()
-        });
-    }
-
-    
 
     handleSubmit(e){
         e.preventDefault();
@@ -85,44 +79,21 @@ export default class GetStarted extends Component{
     render(){
         return(
             <div className='get-started'>
-                <form className='get-started-form' onSubmit={(e) => this.handleSubmit(e)}>
-                    {this.allnames.map((name, i) => (
-                        <span key={i}>
-                            <label>
-                                {`${name[0].toUpperCase()}${name.substring(1)}`}
-                                <input type='text' name={name} value={this.state.fields[name]} onChange={(e) => this.handleChange(e)} />
-                                <div style={{display: 'inline-block', color: 'red'}}>{this.state.error_msg[name]}</div>
-                            </label>
-                            <br/>
-                        </span>
-                    ))}
-                    <label>
-                        Goal
-                        <select value={this.state.goalOptionVal} onChange={(e) => this.handleGoalOptionsChange(e)}>
-                            <option 
-                                style={{display: startUtils.displayGoalDefaultOrNot(this.state.goalOptionVal)}} 
-                                value='instruction'>
-                                    Choose your desired goal
-                            </option>
-                            {
-                                this.options.map((option, i) => (
-                                    <option key={i} value={option}>
-                                        {startUtils.kebabCaseToWords(option)}
-                                    </option>
-                                ))
-                            }
-                        </select>
-                        <div style={{display: 'inline-block', color: 'red'}}>{this.state.error_msg.goal}</div>
-                    </label>
-                    <br/>
-                    <input type='submit' value='Get Started'/>
+                <form className='get-started-form' onSubmit={(e) => this.handleSubmit(e)} >
+                    <TextInputs 
+                        names={this.allnames} 
+                        fields={this.state.fields} 
+                        errors={this.state.error_msg} 
+                        textChangeEvent={(e) => this.handleChange(e)}
+                    />
+                    <Dropdown 
+                        options={this.options} 
+                        currVal={this.state.goalOptionVal} 
+                        change={(e) => this.handleGoalOptionsChange(e)}
+                        error={this.state.error_msg.goal}
+                    />
+                    <SubmitButton />
                 </form>
-                <TextInputs 
-                    names={this.allnames} 
-                    fields={this.state.fields} 
-                    errors={this.state.error_msg} 
-                    textChangeEvent={(e) => this.handleChange(e)}
-                />
             </div>
         );
     }

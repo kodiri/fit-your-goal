@@ -1,7 +1,8 @@
 import React from 'react';
+import * as utils from '../get-started-utils/DropdownUtils';
 
-export default () => (
-    <option style={{display: startUtils.displayGoalDefaultOrNot(this.state.goalOptionVal)}} value='instruction'>
+export default (props) => (
+    <option style={{display: utils.displayGoalDefaultOrNot(props.currVal)}} value='instruction'>
         Choose your desired goal
     </option>
 );

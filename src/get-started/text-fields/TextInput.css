@@ -1,12 +1,25 @@
 .input-label{
     /* font-size: 3.4vw; */
+    display: flex;
+    flex-wrap: wrap;
+}
+input{
+    display: inline-block;
+    width: 200px;
+}
+
+.input-label .name-text{
+    display: inline-block;
+    width: 70px;
 }
 .input-label label{
     border: dashed;
-    display: block;
-    height: 10vh;
+    height: 7vh;
 }
 
 .input-label .error{
     color: red;
+    display: inline-block;
+    padding-left: 10px;
+    width: 200px;
 }

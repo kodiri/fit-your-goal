@@ -1,6 +1,6 @@
 //check if the age, height and weight are numbers
 //this is only for testing and will not be integrated until the goals is done
-function checkIfContinousFieldsAreNumbers(emptyOrNot){
+export function checkIfContinousFieldsAreNumbers(emptyOrNot){
     let newErrorMessages = this.allnames.reduce((acc, name) => {
         let goalsField = name === 'goals';
         if(!emptyOrNot[name] &&
@@ -21,7 +21,7 @@ function checkIfContinousFieldsAreNumbers(emptyOrNot){
 }
 
 //doesn't check for decimal places which might be required for height and/or weight 
-function checkIfFullNum(field, fieldName){
+export function checkIfFullNum(field, fieldName){
     return !field
         .split('')
         .find((char) => !'1234567890'.includes(char));

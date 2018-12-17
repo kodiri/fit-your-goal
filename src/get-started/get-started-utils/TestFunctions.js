@@ -1,4 +1,4 @@
-function createSampleFields(age, weight, height, activity){
+export function createSampleFields(age, weight, height, activity){
     return {
         age: age,
         weight: weight,
@@ -7,7 +7,7 @@ function createSampleFields(age, weight, height, activity){
     }
 }
 
-function createEmptyErrorMessage(...fields){
+export function createEmptyErrorMessage(...fields){
     return fields.reduce((acc, field) => {
         acc[field[0]] = field[1] ?
         `Please fill in the ${field[0]}` :
@@ -16,7 +16,7 @@ function createEmptyErrorMessage(...fields){
     }, {});
 }
 
-function addGoalsToErrorMessage(currErr, goalErrMessage){
+export function addGoalsToErrorMessage(currErr, goalErrMessage){
     let newArr = Object.keys(currErr).reduce((acc, field) => {
         acc[field] = currErr[field];
         return acc;
@@ -26,11 +26,9 @@ function addGoalsToErrorMessage(currErr, goalErrMessage){
 }
 
 //tartget is actually in XML but seems to work like objects (I don't know why)
-function createTargetObj(name, value){
+export function createTargetObj(name, value){
     return {
         name: name,
         value: value
     }
 }
-
-export {createEmptyErrorMessage, addGoalsToErrorMessage, createTargetObj, createSampleFields};
