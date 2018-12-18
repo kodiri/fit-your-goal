@@ -1,3 +1,25 @@
 .submit-button{
+    color: #ffe4c4;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.2rem;
     margin-top: 5px;
+    height: 40px;
+    border: 2px solid #b1b1b1;
+    border-radius: 4px;
+    background-color: #aaaaaa;
+    outline: none;
+    position: relative;
+    right: 70px;
+}
+
+.submit-button:hover{
+    color: #ffecd5;
+    background-color: #b1b1b1;
+    border: 2px solid #aaaaaa
+}
+
+.submit-button:active{
+    background-color: #aaaaaa;
+    color: #ffe4c4;
+    border: 2px solid #b1b1b1;
 }
