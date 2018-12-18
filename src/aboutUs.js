@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import hero from './hero.png';
-import './App.css';
 import logocircle from './logocircle.png'
 
-export default function home() {
+export default function aboutUs() {
     return (
         <div>
             <header className="App-header">
@@ -40,18 +38,13 @@ export default function home() {
             <div className="body">
                 <div className="wrap-content">
                     <div className="title">
-                        <p>fit your goal</p>
+                        <p>About Us</p>
                     </div>
                     <div className="wrap-boxes">
-                        <div className="box1"><img src = {hero} alt = "coverimage" /></div>
-                        <div className="box2"><img src = {hero} alt = "coverimage" /></div>
-                        <div className="box3"><img src = {hero} alt = "coverimage" /></div>
+                        
+                        
                     </div>
-                        <div>                        
-                            <div className="title">
-                            <Link to={'/get-started'} className = "button">Start Now!</Link>
-                            </div>   
-                        </div>
+                        
                             <div className="title2">
                             <p>Free Work-out Programs Just for You</p>
                     </div>
