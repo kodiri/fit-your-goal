@@ -1,0 +1,21 @@
+.full-dropdown{
+    display: flex;
+}
+
+select, .goal-name{
+    display: inline-block;
+}
+
+.goal-name{
+    width: 72px;
+}
+
+.full-dropdown select{
+    width: 200px;
+
+}
+
+.full-dropdown .error{
+    color: red;
+    padding-left: 30px;
+}
