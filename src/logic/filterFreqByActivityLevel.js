@@ -1,9 +1,9 @@
 export function filterFreqByActivityLevel(frequencies, activityLevel) {
     return activityLevel === 0 ?
-        frequencies.filter(function (frequency) { return frequency <= 2 }) :
+        frequencies.filter(frequency => (frequency <= 2)) :
         activityLevel === 1 ?
-            frequencies.filter(function (frequency) { return frequency <= 3 }) :
+            frequencies.filter(frequency => (frequency <= 3)) :
             activityLevel === 2 ?
-                frequencies.filter(function (frequency) { return frequency <= 5 }) :
+                frequencies.filter(frequency => (frequency <= 5)) :
                 frequencies;
 };
