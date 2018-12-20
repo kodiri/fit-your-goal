@@ -4,11 +4,11 @@ import './TextInput.css';
 export default (props) => {
     return(
         <span className='input-label'>
+            <div className='name-text'>{`${props.name[0].toUpperCase()}${props.name.substring(1)}`}</div>
             <label>
-                <div className='name-text'>{`${props.name[0].toUpperCase()}${props.name.substring(1)}`}</div>
                 <input type='text' name={props.name} value={props.value} onChange={props.textChangeEvent}/>
-                <div className='error'>{props.errorMessage}</div>
             </label>
+            <div className='error'>{props.errorMessage}</div>
             <br/>
         </span>
     );

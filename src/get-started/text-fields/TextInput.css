@@ -3,9 +3,26 @@
     display: flex;
     flex-wrap: wrap;
 }
-input{
-    display: inline-block;
+.input-label input{
+    /* display: inline-block; */
     width: 200px;
+    border-radius: 2px;
+}
+
+.input-label label input{
+    border: none;
+    background: #f4f4f4;
+    border: 1px solid #f4f4f4;
+    outline: none;
+    padding: 5px;
+}
+
+.input-label label input:hover{
+    border-color: #bbbbbb;
+}
+
+.input-label label{
+    border-color: #d5d5d5;
 }
 
 .input-label .name-text{
@@ -15,7 +32,6 @@ input{
 .input-label label{
     height: 7vh;
 }
-
 .input-label .error{
     color: red;
     display: inline-block;
