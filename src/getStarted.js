@@ -26,7 +26,7 @@ export default class GetStarted extends Component{
         };
 
         this.allnames = Object.keys(this.state.fields);
-        this.options = ['fitness', 'lose-weight'];
+        this.options = ['fitness', 'lose-weight', 'gain-weight'];
     }
 
     handleChange(e){
@@ -40,7 +40,9 @@ export default class GetStarted extends Component{
         e.preventDefault();
         let allGood = this.validateAllEverything();
         if(allGood){
-            this.props.history.push('/results', this.state.fields);
+            let toPass = this.state.fields;
+            toPass.goal = this.state.goalOptionVal;
+            this.props.history.push('/results', toPass);
         }
     }
 

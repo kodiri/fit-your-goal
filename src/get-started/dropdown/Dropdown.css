@@ -7,7 +7,7 @@ select, .goal-name{
 }
 
 .goal-name{
-    width: 72px;
+    width: 150px;
 }
 
 .full-dropdown select{
