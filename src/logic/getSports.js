@@ -1,4 +1,4 @@
-function getSports(age, weight, goals) {
+export function getSports(age, weight, goals) {
     let sports = ['run', 'bike', 'swim', 'row', 'walk', 'yoga', 'weights']
     sports = filterByAge(sports, age);
     sports = filterByWeight(sports, weight);
@@ -25,12 +25,11 @@ function filterByWeight(sports, weight) {
 }
 
 function filterByGoals(sports, goals) {
-    return goals === 'Lose Weight' ?
+    return goals === 'lose-weight' ?
         sports.filter(function (sport) {
             return sport !== 'weights';
         }) :
-        sports;
+        sports.filter(function(sport){
+            return sport === 'weights';
+        });
 }
-
-//example calling function for user with: age 65, weight 101kg, goal 'Lose Weight'
-getSports(65, 101, 'Lose Weight') //expected output: ["bike", "swim", "walk", "yoga"]
