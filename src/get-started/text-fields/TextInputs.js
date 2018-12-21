@@ -2,7 +2,7 @@ import React from 'react';
 import TextInput from './TextInput';
 
 const textInputs = (props) => {
-    let info = ['Years', 'kg', 'cm', 'session / week', ''];
+    let info = ['Years', 'kg', 'cm', 'sessions / week', ''];
     return(
         <span>
             {

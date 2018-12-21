@@ -26,6 +26,7 @@
 .input-label .name-text{
     display: inline-block;
     width: 150px;
+    color: #deefef;
 }
 .input-label label{
     height: 7vh;
