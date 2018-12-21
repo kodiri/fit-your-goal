@@ -82,9 +82,6 @@ export default class GetStarted extends Component{
     render(){
         return(
             <div className='get-started'>
-                <Link className='get-started-home-link' to='/'>
-                    Home
-                </Link>
                 <form className='get-started-form' onSubmit={(e) => this.handleSubmit(e)} >
                     <TextInputs 
                         names={this.allnames} 
