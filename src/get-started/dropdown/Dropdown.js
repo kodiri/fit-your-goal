@@ -3,7 +3,7 @@ import DefaultOption from './DefaultDropdown';
 import Option from './Option';
 import './Dropdown.css';
 
-export default (props) => {
+const dropdown = (props) => {
     return(
         <span className='full-dropdown'>
             <div className='goal-name'>Goal</div>
@@ -18,4 +18,6 @@ export default (props) => {
             <div className='error'>{props.error}</div>
         </span>
     );
-}
+};
+
+export default dropdown;
