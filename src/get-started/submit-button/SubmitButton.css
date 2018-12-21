@@ -1,25 +1,26 @@
 .submit-button{
+    padding: 11px;
     color: #ffe4c4;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
     font-size: 1.2rem;
     margin-top: 5px;
     height: 40px;
-    border: 2px solid #b1b1b1;
     border-radius: 4px;
-    background-color: #aaaaaa;
+    background-color: rgb(16, 100, 16);
     outline: none;
     position: relative;
     right: 70px;
+    border-radius: 10px;
+    border: none;
 }
 
 .submit-button:hover{
+    cursor: pointer;
     color: #ffecd5;
-    background-color: #b1b1b1;
-    border: 2px solid #aaaaaa
+    background-color: rgb(34, 207, 34);
 }
 
 .submit-button:active{
     background-color: #aaaaaa;
     color: #ffe4c4;
-    border: 2px solid #b1b1b1;
 }
