@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import * as startUtils from './get-started/get-started-utils/GetStartedUtils';
 import TextInputs from './get-started/text-fields/TextInputs';
 import Dropdown from './get-started/dropdown/Dropdown';
@@ -81,6 +82,9 @@ export default class GetStarted extends Component{
     render(){
         return(
             <div className='get-started'>
+                <Link className='get-started-home-link' to='/'>
+                    Home
+                </Link>
                 <form className='get-started-form' onSubmit={(e) => this.handleSubmit(e)} >
                     <TextInputs 
                         names={this.allnames} 
